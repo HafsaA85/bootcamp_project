@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ClientSignupForm, ClientLoginForm
+from .models import Client
 
 
 def home(request):
@@ -33,3 +34,38 @@ def client_login(request):
         form = ClientLoginForm()
     return render(request, 'clients/login.html', {'form': form})
 
+# Create
+def client_create(request):
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('client_list')
+    else:
+        form = ClientForm()
+    return render(request, 'clients/client_form.html', {'form': form, 'title': 'Add Client'})
+
+# Read (List all clients)
+def client_list(request):
+    clients = Client.objects.all()
+    return render(request, 'clients/client_list.html', {'clients': clients})
+
+# Update
+def client_update(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            return redirect('client_list')
+    else:
+        form = ClientForm(instance=client)
+    return render(request, 'clients/client_form.html', {'form': form, 'title': 'Edit Client'})
+
+# Delete
+def client_delete(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    if request.method == 'POST':
+        client.delete()
+        return redirect('client_list')
+    return render(request, 'clients/client_confirm_delete.html', {'client': client})
