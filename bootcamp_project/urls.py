@@ -20,6 +20,12 @@ from clients import views as client_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('clients.urls')),  # includes homepage + client app URLs
+
+    # Home page from clients app
+    path('', client_views.home, name='home'),
+
+    # All other client URLs (signup, login, dashboard, etc.)
+    path('clients/', include('clients.urls')),
 ]
+
 
