@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 from .forms import ClientSignupForm, ClientLoginForm, AppointmentForm
 from .models import Client, Appointment
+from .forms import ClientProfileForm
 
 # -------------------
 # Homepage
@@ -38,6 +38,30 @@ def client_signup(request):
     else:
         form = ClientSignupForm()
     return render(request, 'clients/client_signup.html', {'form': form})
+
+# clients/edit profile views
+
+@login_required
+def client_edit_profile(request):
+    client = request.user.client
+    if request.method == 'POST':
+        form = ClientProfileForm(request.POST, instance=client, user_instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your profile has been updated.")
+            return redirect('client_dashboard')
+    else:
+        form = ClientProfileForm(instance=client, user_instance=request.user)
+    return render(request, 'clients/client_profile_form.html', {'form': form})
+
+@login_required
+def appointment_delete(request, pk):
+    appointment = get_object_or_404(Appointment, pk=pk, client__user=request.user)
+    if request.method == 'POST':
+        appointment.delete()
+        messages.success(request, "Appointment canceled successfully!")
+        return redirect('client_dashboard')
+
 
 # -------------------
 # Login / Logout

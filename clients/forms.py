@@ -13,9 +13,34 @@ class ClientSignupForm(forms.Form):
     phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone'}))
 
 
+# clients/profile forms.py
 
+class ClientProfileForm(forms.ModelForm):
+    full_name = forms.CharField(max_length=150)
+    email = forms.EmailField()
 
-    # clients/forms.py
+    class Meta:
+        model = Client
+        fields = ['phone']  # phone is on Client model
+
+    def __init__(self, *args, **kwargs):
+        # Pass instance of User if editing
+        user_instance = kwargs.pop('user_instance', None)
+        super().__init__(*args, **kwargs)
+        if user_instance:
+            self.fields['full_name'].initial = user_instance.first_name
+            self.fields['email'].initial = user_instance.email
+
+    def save(self, commit=True):
+        client = super().save(commit=False)
+        user = client.user
+        user.first_name = self.cleaned_data['full_name']
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+            client.save()
+        return client
+
 
 class ClientLoginForm(forms.Form):
     email = forms.EmailField(

@@ -19,28 +19,32 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'client_dashboard' %}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'client_logout' %}">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'client_signup' %}">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'client_login' %}">Login</a>
-                    </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/">Admin</a>
-                </li>
-            </ul>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_dashboard' %}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_profile' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_logout' %}">Logout</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_signup' %}">Sign Up</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'client_login' %}">Login</a>
+        </li>
+    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/">Admin</a>
+    </li>
+</ul>
+
         </div>
     </div>
 </nav>
