@@ -20,9 +20,6 @@ from clients import views as client_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', client_views.home, name='home'),           # <-- root URL
-    path('signup/', client_views.client_signup, name='client_signup'),
-     path('', include('clients.urls')), 
-
-    
+    path('', include('clients.urls')),  # includes homepage + client app URLs
 ]
+

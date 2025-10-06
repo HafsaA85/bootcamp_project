@@ -1,10 +1,10 @@
 {% extends 'clients/base.html' %}
-{% block title %}Sign Up - Empowering Minds{% endblock %}
+{% block title %}Login - Empowering Minds{% endblock %}
 
 {% block content %}
-<div class="signup-page d-flex justify-content-center align-items-center">
-    <div class="signup-card p-4 shadow rounded" style="width: 100%; max-width: 400px;">
-        <h2 class="text-center mb-4">Sign Up</h2>
+<div class="login-page d-flex justify-content-center align-items-center">
+    <div class="login-card p-4 shadow rounded" style="width: 100%; max-width: 400px;">
+        <h2 class="text-center mb-4">Login</h2>
 
         <!-- Display messages -->
         {% if messages %}
@@ -16,7 +16,7 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Signup Form -->
+        <!-- Login Form -->
         <form method="post">
             {% csrf_token %}
             {% for field in form %}
@@ -31,7 +31,7 @@
                     {% endfor %}
                 </div>
             {% endfor %}
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
     </div>
 </div>
