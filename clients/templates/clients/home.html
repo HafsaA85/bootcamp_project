@@ -1,8 +1,87 @@
 {% extends 'clients/base.html' %}
+
 {% block title %}Home{% endblock %}
+
 {% block content %}
-<section class="bg-light text-center py-5">
-    <h1 class="display-4">Welcome to Empowering Minds Lifecoaching</h1>
-    <p class="lead">A place where you find yourself</p>
-</section>
+<style>
+/* Gradient background for the hero section */
+.home-hero {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #fff;
+}
+
+/* Quote cards styling */
+.quote-card {
+    border: none;
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: linear-gradient(145deg, #f0f0f0, #ffffff);
+}
+
+.quote-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.quote-card p {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.quote-card small {
+    color: #555;
+}
+
+/* Responsive spacing for cards */
+@media (max-width: 768px) {
+    .quote-card {
+        margin-bottom: 1.5rem;
+    }
+}
+</style>
+
+<div class="home-hero text-center py-5">
+    <h1 class="display-4 mb-4">Welcome to Empowering Minds</h1>
+    <p class="lead mb-5">Your journey to inner confidence, clarity, and growth starts here.</p>
+    <a href="{% url 'client_signup' %}" class="btn btn-light btn-lg me-2">Join Now</a>
+    <a href="{% url 'client_login' %}" class="btn btn-outline-light btn-lg">Login</a>
+</div>
+
+<div class="container my-5">
+    <div class="row g-4">
+        {% comment %} Quote cards {% endcomment %}
+        <div class="col-md-6 col-lg-4">
+            <div class="quote-card shadow-sm h-100 text-center">
+                <p>“Empower your thoughts, and your life will follow.”</p>
+                <small>– Growth & Mindset</small>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="quote-card shadow-sm h-100 text-center">
+                <p>“Strength doesn’t come from avoiding challenges; it comes from facing them.”</p>
+                <small>– Resilience & Courage</small>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="quote-card shadow-sm h-100 text-center">
+                <p>“Believe in your mind, and your world will believe in you.”</p>
+                <small>– Inner Confidence</small>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="quote-card shadow-sm h-100 text-center">
+                <p>“Every small thought of courage plants a seed for a life of greatness.”</p>
+                <small>– Transformation</small>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="quote-card shadow-sm h-100 text-center">
+                <p>“The mind is your compass. Choose the path that leads to empowerment.”</p>
+                <small>– Self-Discovery</small>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
