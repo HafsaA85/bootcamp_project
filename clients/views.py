@@ -31,7 +31,7 @@ def client_signup(request):
             # ✅ Check if user with this email already exists
             if User.objects.filter(email=email).exists():
                 messages.error(request, "A user with this email already exists.")
-                return render(request, 'clients/signup.html', {'form': form})
+                return render(request, 'clients/client_signup.html', {'form': form})
 
             # ✅ Create user
             user = User.objects.create_user(
@@ -49,7 +49,7 @@ def client_signup(request):
     else:
         form = ClientSignupForm()
 
-    return render(request, 'clients/signup.html', {'form': form})
+    return render(request, 'clients/client_signup.html', {'form': form})
 
 
 # -------------------
