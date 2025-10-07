@@ -12,13 +12,16 @@ class ClientSignupForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
     phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone'}))
 
+
 # Method to validate phone
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')
+#validation for phone to be digits only        
         if phone and not phone.isdigit():
             raise forms.ValidationError("Phone number must contain digits only.")
         return phone
     
+
 # clients/profile 
 
 class ClientProfileForm(forms.ModelForm):

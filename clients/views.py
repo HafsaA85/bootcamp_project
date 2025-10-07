@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import ClientSignupForm, ClientLoginForm, AppointmentForm
+from .forms import ClientSignupForm, ClientLoginForm, AppointmentForm, ClientProfileForm
 from .models import Client, Appointment
-from .forms import ClientProfileForm
+
 
 # -------------------
 # Homepage
@@ -14,6 +14,7 @@ from .forms import ClientProfileForm
 def home(request):
     print("Host header:", request.get_host())
     return render(request, 'clients/home.html')
+
 
 # -------------------
 # Signup
@@ -27,21 +28,33 @@ def client_signup(request):
             password = form.cleaned_data['password']
             phone = form.cleaned_data['phone']
 
-            # Create User
-            user = User.objects.create_user(username=email, email=email, password=password, first_name=full_name)
-            
-            # Create Client profile
-            client = Client.objects.create(user=user, phone=phone)
+            # ✅ Check if user with this email already exists
+            if User.objects.filter(email=email).exists():
+                messages.error(request, "A user with this email already exists.")
+                return render(request, 'clients/signup.html', {'form': form})
 
-            login(request, user)
-            messages.success(request, "Signup successful! Welcome.")
-            return redirect('client_dashboard')
+            # ✅ Create user
+            user = User.objects.create_user(
+                username=email,  # using email as username
+                email=email,
+                password=password,
+                first_name=full_name
+            )
+
+            # ✅ Create client profile
+            Client.objects.create(user=user, phone=phone)
+
+            messages.success(request, "Your account has been created successfully! Please log in.")
+            return redirect('client_login')
     else:
         form = ClientSignupForm()
-    return render(request, 'clients/client_signup.html', {'form': form})
 
-# clients/edit profile views
+    return render(request, 'clients/signup.html', {'form': form})
 
+
+# -------------------
+# Edit profile
+# -------------------
 @login_required
 def client_edit_profile(request):
     client = request.user.client
@@ -55,6 +68,7 @@ def client_edit_profile(request):
         form = ClientProfileForm(instance=client, user_instance=request.user)
     return render(request, 'clients/client_profile_form.html', {'form': form})
 
+
 @login_required
 def appointment_delete(request, pk):
     appointment = get_object_or_404(Appointment, pk=pk, client__user=request.user)
@@ -67,15 +81,13 @@ def appointment_delete(request, pk):
 # -------------------
 # Login / Logout
 # -------------------
-# clients/views.py (login view)
-
 def client_login(request):
     if request.method == 'POST':
         form = ClientLoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            # email is used as username
+
             user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user)
@@ -85,6 +97,7 @@ def client_login(request):
                 messages.error(request, "Invalid email or password.")
     else:
         form = ClientLoginForm()
+
     return render(request, 'clients/client_login.html', {'form': form})
 
 
@@ -93,6 +106,7 @@ def client_logout(request):
     messages.success(request, "You have been logged out.")
     return redirect('home')
 
+
 # -------------------
 # Appointments (CRUD)
 # -------------------
@@ -100,6 +114,7 @@ def client_logout(request):
 def appointment_list(request):
     appointments = Appointment.objects.filter(client__user=request.user)
     return render(request, 'clients/client_dashboard.html', {'appointments': appointments})
+
 
 @login_required
 def appointment_create(request):
@@ -115,6 +130,7 @@ def appointment_create(request):
         form = AppointmentForm()
     return render(request, 'clients/appointment_form.html', {'form': form, 'title': 'Book New Appointment'})
 
+
 @login_required
 def appointment_update(request, pk):
     appointment = get_object_or_404(Appointment, pk=pk, client__user=request.user)
@@ -127,6 +143,7 @@ def appointment_update(request, pk):
     else:
         form = AppointmentForm(instance=appointment)
     return render(request, 'clients/appointment_form.html', {'form': form, 'title': 'Edit Appointment'})
+
 
 # -------------------
 # Delete own account
