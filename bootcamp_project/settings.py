@@ -52,7 +52,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
+
 
 ROOT_URLCONF = 'bootcamp_project.urls'
 
@@ -82,7 +86,6 @@ DATABASES = {
         default=config("DATABASE_URL")
     )
 }
-
 
 
 # Password validation
@@ -119,8 +122,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = []  # leave empty unless you have a global static folder
+# Static files (CSS, JavaScript, Images)
+
+
+# URL to use when referring to static files
+STATIC_URL = '/static/'
+
+# Local development static files folder (optional)
+# Add a "static" folder at your project root if you want a global static folder
+STATICFILES_DIRS = [BASE_DIR / "static"]  # keep this only if you have a project-level static folder
+
+# Folder where collectstatic will collect all static files for production
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Middleware for serving static files in production (Heroku)
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+
 
 
 # Default primary key field type
