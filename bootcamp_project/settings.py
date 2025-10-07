@@ -28,7 +28,9 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 #Heruko app
-ALLOWED_HOSTS = ['bootcamp-project-b0cace5ba99e.herokuapp.com', 'localhost', '127.0.0.1']
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
 
 
 # Application definition
