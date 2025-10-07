@@ -12,6 +12,7 @@ from .forms import ClientProfileForm
 # Homepage
 # -------------------
 def home(request):
+    print("Host header:", request.get_host())
     return render(request, 'clients/home.html')
 
 # -------------------
