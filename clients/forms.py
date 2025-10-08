@@ -5,25 +5,42 @@ from .models import Client, Appointment
 
 
 # Signup form using email as username
-
 class ClientSignupForm(forms.Form):
-    full_name = forms.CharField(max_length=150, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full Name'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
-    phone = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone'}))
+    full_name = forms.CharField(
+        max_length=150,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Full Name'}
+        ),
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={'class': 'form-control', 'placeholder': 'Email'}
+        ),
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Password'}
+        ),
+    )
+    phone = forms.CharField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Phone'}
+        ),
+    )
 
-
-# Method to validate phone
+    # Method to validate phone
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')
-#validation for phone to be digits only        
+        # Validation for phone to be digits only
         if phone and not phone.isdigit():
-            raise forms.ValidationError("Phone number must contain digits only.")
+            raise forms.ValidationError(
+                "Phone number must contain digits only."
+            )
         return phone
-    
 
-# clients/profile 
 
+# clients/profile
 class ClientProfileForm(forms.ModelForm):
     full_name = forms.CharField(max_length=150)
     email = forms.EmailField()
@@ -53,12 +70,15 @@ class ClientProfileForm(forms.ModelForm):
 
 class ClientLoginForm(forms.Form):
     email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+        widget=forms.EmailInput(
+            attrs={'class': 'form-control', 'placeholder': 'Email'}
+        ),
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'})
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Password'}
+        ),
     )
-
 
 
 class AppointmentForm(forms.ModelForm):
@@ -66,7 +86,13 @@ class AppointmentForm(forms.ModelForm):
         model = Appointment
         fields = ['title', 'date', 'notes']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'date': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}),
-            'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'title': forms.TextInput(
+                attrs={'class': 'form-control'}
+            ),
+            'date': forms.DateTimeInput(
+                attrs={'class': 'form-control', 'type': 'datetime-local'}
+            ),
+            'notes': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': 4}
+            ),
         }
