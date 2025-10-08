@@ -56,7 +56,7 @@ The design of **Empowering Minds** focuses on providing a smooth and intuitive e
 ![Home Page Screenshot](clients/static/clients/images/HP.png)
 
 **Dashboard / Appointments**  
-![Dashboard Screenshot](clients/static/clients/images/Dashboard.png)
+![Dashboard Screenshot](clients/static/clients/images/Dashboard.JPG)
 
 **Profile Edit Form**  
 ![Profile Edit Screenshot](clients/static/clients/images/EditProfile.png)
