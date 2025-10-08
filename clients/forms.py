@@ -17,17 +17,19 @@ class ClientSignupForm(forms.Form):
             attrs={'class': 'form-control', 'placeholder': 'Email'}
         ),
     )
-    password = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={'class': 'form-control', 'placeholder': 'Password'}
-        ),
-    )
+
     phone = forms.CharField(
         required=False,
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Phone'}
         ),
     )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Password'}
+        ),
+    )
+    
 
     # Method to validate phone
     def clean_phone(self):
@@ -40,17 +42,15 @@ class ClientSignupForm(forms.Form):
         return phone
 
 
-# clients/profile
 class ClientProfileForm(forms.ModelForm):
     full_name = forms.CharField(max_length=150)
     email = forms.EmailField()
 
     class Meta:
         model = Client
-        fields = ['phone']  # phone is on Client model
+        fields = ['full_name', 'email', 'phone']  # Order fixed here!
 
     def __init__(self, *args, **kwargs):
-        # Pass instance of User if editing
         user_instance = kwargs.pop('user_instance', None)
         super().__init__(*args, **kwargs)
         if user_instance:
@@ -66,6 +66,7 @@ class ClientProfileForm(forms.ModelForm):
             user.save()
             client.save()
         return client
+
 
 
 class ClientLoginForm(forms.Form):

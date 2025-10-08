@@ -42,23 +42,37 @@ The design of **Empowering Minds** focuses on providing a smooth and intuitive e
 - **Responsive Design:** Works on desktop, tablet, and mobile.
 - **Notifications:** Appointment confirmations and updates.
 
+## Wireframe
+
+![Home Page Wireframe](clients/static/clients/images/HP.png)
+![Dashboard Wireframe](clients/static/clients/images/Dashboardwireframe.JPG)
+![Edit Profile Wireframe](clients/static/clients/images/EditPWireframe.JPG)
+![Edit Appointment Wireframe](clients/static/clients/images/EditApp.JPG)
+
+
 ### Screenshots
 
 **Home Page**  
-![Home Page Screenshot](screenshots/home.png)
+![Home Page Screenshot](clients/static/clients/images/HP.png)
 
 **Dashboard / Appointments**  
-![Dashboard Screenshot](screenshots/dashboard.png)
+![Dashboard Screenshot](clients/static/clients/images/Dashboard.png)
 
 **Profile Edit Form**  
-![Profile Edit Screenshot](screenshots/profile_edit.png)
+![Profile Edit Screenshot](clients/static/clients/images/EditProfile.png)
+
+**Phone Validation**  
+![Validation Error](clients/static/clients/images/PhoneValidation.JPG)
+
+**Complete set of screenshots**
+![Screenshots](clients/static/clients/documents/Test%20Screenshots.docx)
 
 ---
 
 ## 🏃 Agile Project Board
 
 The project was developed using Agile methodology.  
-You can view the project board here: [Project Board Link](https://link-to-your-board.com)
+You can view the project board here: [Project Board Link](https://github.com/users/HafsaA85/projects/6)
 
 ---
 
@@ -73,17 +87,16 @@ Testing was performed to ensure that all features work as expected, including us
 - Logout and session management
 
 ### Testing Screenshots
-**Appointment Form Validation**  
-![Appointment Form Screenshot](screenshots/appointment_form.png)
+ 
+![Test Doc with Screenshots](clients/static/clients/documents/)
 
-**Success and Error Messages**  
-![Messages Screenshot](screenshots/messages.png)
+
 
 ---
 
 ## 🚀 Deployment
 
-The project is deployed on **Heroku**: [Deployed App Link](https://your-app.herokuapp.com)  
+The project is deployed on **Heroku**: [Deployed App Link](https://bootcamp-project-b0cace5ba99e.herokuapp.com/)  
 
 Steps for deployment:
 1. Push code to GitHub repository.
