@@ -44,10 +44,10 @@ The design of **Empowering Minds** focuses on providing a smooth and intuitive e
 
 ## Wireframe
 
-![Home Page Wireframe](clients/static/clients/images/HP.png)
+![Home Page Wireframe](clients/static/clients/images/HPwireframe.JPG)
 ![Dashboard Wireframe](clients/static/clients/images/Dashboardwireframe.JPG)
 ![Edit Profile Wireframe](clients/static/clients/images/EditPWireframe.JPG)
-![Edit Appointment Wireframe](clients/static/clients/images/EditApp.JPG)
+![Edit Appointment Wireframe](clients/static/clients/images/EditAppWireframe.JPG)
 
 
 ### Screenshots
@@ -59,7 +59,7 @@ The design of **Empowering Minds** focuses on providing a smooth and intuitive e
 ![Dashboard Screenshot](clients/static/clients/images/Dashboard.JPG)
 
 **Profile Edit Form**  
-![Profile Edit Screenshot](clients/static/clients/images/EditProfile.png)
+![Edit Profile Screenshot](clients/static/clients/images/EditP.JPG)
 
 **Phone Validation**  
 ![Validation Error](clients/static/clients/images/PhoneValidation.JPG)
