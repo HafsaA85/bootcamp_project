@@ -118,12 +118,12 @@ This diagram represents the main entities of the application and their relations
 **Phone Validation**  
 ![Validation Error](clients/static/clients/images/PhoneValidation.JPG)
 
+**Site Responsiveness**
+![Site Responsiveness Test](clients/static/clients/images/SiteResponsiveness.JPG)
+
 **Complete set of screenshots**
 ![Screenshots Doc](clients/static/clients/documents/Test%20Screenshots.docx)
 
-
-**Site Responsiveness**
-![Site Responsiveness Test](clients/static/clients/images/SiteResponsiveness.JPG)
 
 ---
 
