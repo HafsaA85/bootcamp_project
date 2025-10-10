@@ -121,6 +121,7 @@ This diagram represents the main entities of the application and their relations
 **Complete set of screenshots**
 ![Screenshots Doc](clients/static/clients/documents/Test%20Screenshots.docx)
 
+
 **Complete set of screenshots**
 ![Site Responsiveness Test](clients/static/clients/images/SiteResponsiveness.JPG)
 
@@ -291,7 +292,7 @@ Steps for deployment:
 - Bootstrap 5 for UI styling
 - Icons and design inspiration from [Bootstrap Icons](https://icons.getbootstrap.com/)
 - Any external code snippets or libraries are credited within the code comments
-- For site responsiveness, used [Am I Responsive](https://ui.dev/amiresponsive?url=https://bootcamp-project-b0cace5ba99e.herokuapp.com/clients/)
+- For site responsiveness, used Am I Responsive website (https://ui.dev/amiresponsive?url=https://bootcamp-project-b0cace5ba99e.herokuapp.com/clients/)
 
 ---
 
