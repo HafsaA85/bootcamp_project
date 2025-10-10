@@ -13,6 +13,29 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar buttons spacing */
+.navbar .nav-btn {
+    min-width: 90px;
+}
+
+@media (max-width: 767px) {
+    /* Stack navbar buttons vertically on mobile */
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar .nav-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a,
@@ -23,8 +46,6 @@ button {
 /* =========================================================
    SIGNUP / LOGIN PAGE STYLES
    ========================================================= */
-
-/* Full-page gradient background */
 .signup-page,
 .login-page {
     background: linear-gradient(135deg, #e0f7fa, #80deea);
@@ -35,7 +56,6 @@ button {
     padding: 20px;
 }
 
-/* Card styles */
 .signup-card,
 .login-card {
     background-color: var(--card-bg-light);
@@ -48,14 +68,12 @@ button {
     margin: 20px auto;
 }
 
-/* Card hover effect */
 .signup-card:hover,
 .login-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
 }
 
-/* Card title */
 .signup-card h2,
 .login-card h2 {
     text-align: center;
@@ -64,7 +82,6 @@ button {
     font-weight: 600;
 }
 
-/* Form fields */
 .signup-card input.form-control,
 .signup-card select.form-control,
 .signup-card textarea.form-control,
@@ -79,7 +96,6 @@ button {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Focus effect */
 .signup-card input.form-control:focus,
 .signup-card select.form-control:focus,
 .signup-card textarea.form-control:focus,
@@ -91,14 +107,13 @@ button {
     outline: none;
 }
 
-/* Submit button */
 .signup-card .btn-submit,
 .login-card .btn-submit {
-    width: 50%;
+    width: 100%;
     display: block;
     margin: 1rem auto 0 auto;
     font-weight: 500;
-    padding: 10px 0;
+    padding: 12px 0;
     border-radius: 0.5rem;
     background-color: var(--primary);
     color: #fff;
@@ -106,14 +121,12 @@ button {
     cursor: pointer;
 }
 
-/* Button hover effect */
 .signup-card .btn-submit:hover,
 .login-card .btn-submit:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
 }
 
-/* Alerts */
 .signup-card .alert,
 .login-card .alert {
     margin-bottom: 1rem;
@@ -123,11 +136,27 @@ button {
 /* =========================================================
    HOME PAGE STYLES
    ========================================================= */
-
-/* Gradient background for the hero section */
 .home-hero {
-    background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
+    background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
     color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.home-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.home-hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.home-hero .btn {
+    min-width: 140px;
+    margin: 0.5rem;
 }
 
 /* Quote cards styling */
@@ -137,17 +166,19 @@ button {
     padding: 2rem;
     transition: transform 0.3s, box-shadow 0.3s;
     background: var(--card-bg-gradient);
+    width: 100%;
+    margin: 0 auto 1.5rem auto;
 }
 
 .quote-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
 .quote-card p {
     font-size: 1.1rem;
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .quote-card small {
@@ -170,6 +201,18 @@ button {
     .login-card .btn-submit {
         font-size: 18px;
     }
+
+    .quote-card {
+        max-width: 450px;
+    }
+
+    .home-hero h1 {
+        font-size: 3rem;
+    }
+
+    .home-hero p {
+        font-size: 1.5rem;
+    }
 }
 
 /* Tablet: 768px to 1023px */
@@ -184,6 +227,18 @@ button {
     .login-card .btn-submit {
         font-size: 16px;
     }
+
+    .quote-card {
+        max-width: 80%;
+    }
+
+    .home-hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .home-hero p {
+        font-size: 1.2rem;
+    }
 }
 
 /* Mobile: 767px and below */
@@ -196,7 +251,6 @@ button {
 
     .signup-card .btn-submit,
     .login-card .btn-submit {
-        width: 100%;
         font-size: 14px;
         padding: 10px 0;
     }
@@ -207,8 +261,17 @@ button {
         padding: 8px;
     }
 
-    /* Quote cards spacing on small screens */
     .quote-card {
+        width: 95%;
+        padding: 1.5rem;
         margin-bottom: 1.5rem;
+    }
+
+    .home-hero h1 {
+        font-size: 2rem;
+    }
+
+    .home-hero p {
+        font-size: 1rem;
     }
 }
