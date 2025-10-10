@@ -49,6 +49,60 @@ The design of **Empowering Minds** focuses on providing a smooth and intuitive e
 ![Edit Profile Wireframe](clients/static/clients/images/EditPWireframe.JPG)
 ![Edit Appointment Wireframe](clients/static/clients/images/EditAppWireframe.JPG)
 
+## Entity-Relationship Diagram (ERD)
+
+This diagram represents the main entities of the application and their relationships:
+
+### Entities and Relationships
+
+1. **User** (Django built-in)
+   - Fields: `id` (PK), `username`, `email`, `password`, `first_name`, `last_name`, etc.
+
+2. **Client**
+   - Fields: `id` (PK), `user_id` (FK → User.id), `phone`
+   - Relationship: One-to-One with User
+
+3. **Appointment**
+   - Fields: `id` (PK), `client_id` (FK → Client.id), `title`, `date`, `notes`
+   - Relationship: Many-to-One with Client
+
+4. **Notification**
+   - Fields: `id` (PK), `client_id` (FK → Client.id), `message`, `read`, `timestamp`
+   - Relationship: Many-to-One with Client
+
+### ERD Diagram (Text Version)
+
++---------+ +---------+ +-------------+
+| User |1 1| Client |1 *| Appointment |
++---------+-----------+---------+-----------+-------------+
+| id | | id | | id |
+| username| | user_id | FK--------| client_id |
+| email | | phone | | title |
+| password| +---------+ | date |
+| ... | | notes |
++---------+ +-------------+
+*
+|
+|
+|
++-------------+
+| Notification|
++-------------+
+| id |
+| client_id |
+| message |
+| read |
+| timestamp |
++-------------+
+
+
+### Notes
+
+- Each **User** has exactly **one Client** profile.  
+- Each **Client** can have **multiple Appointments**.  
+- Each **Client** can have **multiple Notifications**.  
+- This ERD helps visualize database relationships and is based on the current project models.
+
 
 ### Screenshots
 
@@ -76,15 +130,136 @@ You can view the project board here: [Project Board Link](https://github.com/use
 
 ---
 
-## 🧪 Testing
+## Automated Unit Tests
 
-Testing was performed to ensure that all features work as expected, including user authentication, appointment CRUD, and profile updates.
+Automated tests have been implemented using Django's built-in testing framework (`django.test.TestCase`) to verify the functionality of the models and core application features.
 
-### Sample Test Cases
-- Signup and login flow
-- Appointment creation, editing, and deletion
-- Profile editing
-- Logout and session management
+### **1. Client Model Tests**
+
+File: `clients/tests.py`
+
+Example test:
+
+```python
+from django.test import TestCase
+from .models import Client, Appointment
+from django.contrib.auth.models import User
+
+class ClientModelTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='password')
+        self.client_profile = Client.objects.create(user=self.user, phone='1234567890')
+
+    def test_client_str(self):
+        self.assertEqual(str(self.client_profile), 'testuser')
+
+
+## Manual Test Procedures
+
+The following manual tests were performed to verify the functionality of the Django full-stack application.
+
+---
+
+### **1. User/Client Sign Up**
+**Steps:**
+1. Navigate to the signup page.
+2. Fill in valid `username`, `email`, `password`, and `phone` fields.
+3. Submit the form.
+
+**Expected Results:**
+- User is created successfully.
+- Client profile is linked to the new User.
+- Phone number accepts only digits; any other input triggers a validation error.
+
+---
+
+### **2. User/Client Login**
+**Steps:**
+1. Navigate to the login page.
+2. Enter correct credentials (username/email and password).
+3. Submit the form.
+
+**Expected Results:**
+- User can log in successfully.
+- Incorrect credentials display an error message: `"Please enter the correct username and password."`
+
+---
+
+### **3. Appointment Management**
+**Steps:**
+1. While logged in as a client, navigate to **Book New Appointment**.
+2. Fill in `title`, `date`, and optional `notes`.
+3. Submit the form.
+4. Edit the appointment details.
+5. Cancel/delete the appointment.
+
+**Expected Results:**
+- Appointment is created and linked to the logged-in client.
+- Client can edit appointment details successfully.
+- Client can cancel/delete the appointment.
+- Notification messages appear at the top of the page for each action.
+
+---
+
+### **4. Admin Management**
+**Steps:**
+1. Log in as an admin.
+2. Create a new client/user via the admin panel.
+3. Edit existing client/user details.
+4. Delete a client/user.
+
+**Expected Results:**
+- Admin can perform all create, edit, and delete operations on users/clients.
+- Non-admin users cannot access admin login or admin pages.
+
+---
+
+### **5. Notifications**
+**Steps & Actions:**
+- User creation
+- Login
+- Edit profile
+- Add/Edit appointment
+- Delete/Cancel appointment
+
+**Expected Results:**
+- A notification message appears at the top of the page for each action.
+- Messages are clear and correspond to the performed action, e.g.:
+  - `"Client profile created successfully."`
+  - `"Logged in successfully."`
+  - `"Profile updated successfully."`
+  - `"Appointment added successfully."`
+  - `"Appointment deleted successfully."`
+
+---
+
+### **6. Phone Number Validation**
+**Steps:**
+1. Enter letters, special characters, or mixed input in the phone field during signup or profile edit.
+2. Submit the form.
+
+**Expected Results:**
+- Form validation prevents submission.
+- Error message is displayed: `"Enter a valid phone number containing only digits."`
+
+---
+
+### **7. Security / Role Restrictions**
+**Steps:**
+1. Attempt to log in as a non-admin user to the admin panel.
+2. Attempt to perform admin actions with a client account.
+
+**Expected Results:**
+- Non-admin users cannot access admin pages or perform admin actions.
+- Proper error messages or redirects appear when unauthorized access is attempted.
+
+---
+
+### **Notes**
+- All actions should trigger a notification at the top of the page.
+- The application is fully functional in a browser with responsive design.
+- Phone number validation and login error handling have been tested on multiple input cases.
+
 
 ### Testing Screenshots
  
