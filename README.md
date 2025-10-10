@@ -308,10 +308,4 @@ AI tools (ChatGPT) were used to assist in the development process, primarily to:
 - Assist in creating user stories and structuring the README.
 - Offer advice for testing scripts and validation logic.
 
----
 
-## 📌 Notes
-
-- Replace all screenshot placeholders with actual images from your project.
-- Replace project board and deployed app links with your real URLs.
-- Keep README updated as features or workflows change.
