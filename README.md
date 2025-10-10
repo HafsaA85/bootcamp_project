@@ -122,7 +122,7 @@ This diagram represents the main entities of the application and their relations
 ![Screenshots Doc](clients/static/clients/documents/Test%20Screenshots.docx)
 
 
-**Complete set of screenshots**
+**Site Responsiveness**
 ![Site Responsiveness Test](clients/static/clients/images/SiteResponsiveness.JPG)
 
 ---
