@@ -147,6 +147,22 @@ This diagram represents the main entities of the application and their relations
 **Complete set of screenshots**
 ![Screenshots Doc](clients/static/clients/documents/Test%20Screenshots.docx)
 
+## Example screenshots
+
+
+**Performance test 1**  
+![Performance test 1](clients/static/clients/images/SiteResponsiveness.JPG)
+
+**Performance test 2**  
+![Performance test 2](clients/static/clients/images/TimeStamp.JPG)
+
+**Performance test 3**  
+![Performance test 3](clients/static/clients/images/Snapshot.JPG)
+
+**Performance test 4**
+![Performance test 4](clients/static/clients/images/Dessnapshot.JPG)
+
+
 
 ---
 
@@ -298,20 +314,6 @@ The following manual tests were performed to verify the functionality of the Dja
 - A class feloow checked and the performance was showing low. But it was not showing when I testes.
 - I fixed suggested errors and it still didn't work on my side.
 
-## Example screenshots
-
-
-**Performance test 1**  
-![Performance test 1](clients/static/clients/images/SiteResponsiveness.JPG)
-
-**Performance test 2**  
-![Performance test 2](clients/static/clients/images/TimeStamp.JPG)
-
-**Performance test 3**  
-![Performance test 3](clients/static/clients/images/Snapshot.JPG)
-
-**Performance test 4**
-![Performance test 4](clients/static/clients/images/Dessnapshot.JPG)
 
 ---
 
