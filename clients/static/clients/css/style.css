@@ -17,23 +17,6 @@
     padding: 0;
 }
 
-/* Navbar buttons spacing */
-.navbar .nav-btn {
-    min-width: 90px;
-}
-
-@media (max-width: 767px) {
-    /* Stack navbar buttons vertically on mobile */
-    .navbar-nav {
-        text-align: center;
-    }
-    .navbar .nav-btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-}
-
-
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -44,97 +27,24 @@ button {
 }
 
 /* =========================================================
-   SIGNUP / LOGIN PAGE STYLES
+   NAVBAR BUTTONS & RESPONSIVENESS
    ========================================================= */
-.signup-page,
-.login-page {
-    background: linear-gradient(135deg, #e0f7fa, #80deea);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.navbar .nav-btn {
+    min-width: 90px;
 }
 
-.signup-card,
-.login-card {
-    background-color: var(--card-bg-light);
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
-}
-
-.signup-card:hover,
-.login-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
-}
-
-.signup-card h2,
-.login-card h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.signup-card input.form-control,
-.signup-card select.form-control,
-.signup-card textarea.form-control,
-.login-card input.form-control,
-.login-card select.form-control,
-.login-card textarea.form-control {
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.signup-card input.form-control:focus,
-.signup-card select.form-control:focus,
-.signup-card textarea.form-control:focus,
-.login-card input.form-control:focus,
-.login-card select.form-control:focus,
-.login-card textarea.form-control:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 8px rgba(0, 64, 128, 0.3);
-    outline: none;
-}
-
-.signup-card .btn-submit,
-.login-card .btn-submit {
-    width: 100%;
-    display: block;
-    margin: 1rem auto 0 auto;
-    font-weight: 500;
-    padding: 12px 0;
-    border-radius: 0.5rem;
-    background-color: var(--primary);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.signup-card .btn-submit:hover,
-.login-card .btn-submit:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.signup-card .alert,
-.login-card .alert {
-    margin-bottom: 1rem;
-    border-radius: 0.5rem;
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar .nav-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
 }
 
 /* =========================================================
-   HOME PAGE STYLES
+   HOME HERO SECTION
    ========================================================= */
 .home-hero {
     background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
@@ -142,6 +52,7 @@ button {
     padding: 60px 20px;
     text-align: center;
     border-radius: 12px;
+    min-height: 300px; /* reserve space to prevent layout shift */
 }
 
 .home-hero h1 {
@@ -159,7 +70,9 @@ button {
     margin: 0.5rem;
 }
 
-/* Quote cards styling */
+/* =========================================================
+   QUOTE CARDS
+   ========================================================= */
 .quote-card {
     border: none;
     border-radius: 12px;
@@ -168,6 +81,7 @@ button {
     background: var(--card-bg-gradient);
     width: 100%;
     margin: 0 auto 1.5rem auto;
+    min-height: 200px; /* prevents layout shifts */
 }
 
 .quote-card:hover {
@@ -186,92 +100,74 @@ button {
 }
 
 /* =========================================================
+   DASHBOARD TABLE FIXES
+   ========================================================= */
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-fixed th,
+.table-fixed td {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.table-fixed td .btn {
+    margin-bottom: 0.25rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-fixed tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* =========================================================
    MEDIA QUERIES
    ========================================================= */
 
 /* Desktop: 1024px and above */
 @media (min-width: 1024px) {
-    .signup-card,
-    .login-card {
-        max-width: 600px;
-        padding: 25px;
-    }
-
-    .signup-card .btn-submit,
-    .login-card .btn-submit {
-        font-size: 18px;
-    }
-
-    .quote-card {
-        max-width: 450px;
-    }
-
     .home-hero h1 {
         font-size: 3rem;
     }
-
     .home-hero p {
         font-size: 1.5rem;
+    }
+    .quote-card {
+        max-width: 450px;
     }
 }
 
 /* Tablet: 768px to 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .signup-card,
-    .login-card {
-        max-width: 80%;
-        padding: 20px;
-    }
-
-    .signup-card .btn-submit,
-    .login-card .btn-submit {
-        font-size: 16px;
-    }
-
-    .quote-card {
-        max-width: 80%;
-    }
-
     .home-hero h1 {
         font-size: 2.25rem;
     }
-
     .home-hero p {
         font-size: 1.2rem;
+    }
+    .quote-card {
+        max-width: 80%;
     }
 }
 
 /* Mobile: 767px and below */
 @media (max-width: 767px) {
-    .signup-card,
-    .login-card {
-        width: 95%;
-        padding: 15px;
+    .home-hero h1 {
+        font-size: 2rem;
     }
-
-    .signup-card .btn-submit,
-    .login-card .btn-submit {
-        font-size: 14px;
-        padding: 10px 0;
+    .home-hero p {
+        font-size: 1rem;
     }
-
-    .signup-card input.form-control,
-    .login-card input.form-control {
-        font-size: 14px;
-        padding: 8px;
-    }
-
     .quote-card {
         width: 95%;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-    }
-
-    .home-hero h1 {
-        font-size: 2rem;
-    }
-
-    .home-hero p {
-        font-size: 1rem;
     }
 }

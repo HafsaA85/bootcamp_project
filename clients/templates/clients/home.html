@@ -6,7 +6,6 @@
 <meta name="description" content="Empowering Minds helps you build inner confidence, clarity, and personal growth through practical mindset coaching.">
 {% endblock %}
 
-
 {% block content %}
 
 <div class="home-hero text-center py-5">
@@ -21,37 +20,22 @@
 
 <div class="container my-5">
     <div class="row g-4">
-        {% comment %} Quote cards {% endcomment %}
+        <!-- Quote cards -->
+        {% for quote, author in [
+            ("Empower your thoughts, and your life will follow.", "Growth & Mindset"),
+            ("Strength doesn’t come from avoiding challenges; it comes from facing them.", "Resilience & Courage"),
+            ("Believe in your mind, and your world will believe in you.", "Inner Confidence"),
+            ("Every small thought of courage plants a seed for a life of greatness.", "Transformation"),
+            ("The mind is your compass. Choose the path that leads to empowerment.", "Self-Discovery")
+        ] %}
         <div class="col-md-6 col-lg-4">
             <div class="quote-card shadow-sm h-100 text-center">
-                <p>“Empower your thoughts, and your life will follow.”</p>
-                <small>– Growth & Mindset</small>
+                <p>{{ quote }}</p>
+                <small>– {{ author }}</small>
             </div>
         </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="quote-card shadow-sm h-100 text-center">
-                <p>“Strength doesn’t come from avoiding challenges; it comes from facing them.”</p>
-                <small>– Resilience & Courage</small>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="quote-card shadow-sm h-100 text-center">
-                <p>“Believe in your mind, and your world will believe in you.”</p>
-                <small>– Inner Confidence</small>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="quote-card shadow-sm h-100 text-center">
-                <p>“Every small thought of courage plants a seed for a life of greatness.”</p>
-                <small>– Transformation</small>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="quote-card shadow-sm h-100 text-center">
-                <p>“The mind is your compass. Choose the path that leads to empowerment.”</p>
-                <small>– Self-Discovery</small>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
+
 {% endblock %}
