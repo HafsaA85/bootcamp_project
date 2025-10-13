@@ -147,11 +147,9 @@ This diagram represents the main entities of the application and their relations
 **Complete set of screenshots**
 ![Screenshots Doc](clients/static/clients/documents/Test%20Screenshots.docx)
 
-## Example screenshots
+## Example screenshots 
+### Fellow student tested and performance was working on their machine but not mine. Made changes based on errors and still not performing well on my laptop. Having issues with my laptop lately too which could be an issue.
 
-
-**Performance test 1**  
-![Performance test 1](clients/static/clients/images/SiteResponsiveness.JPG)
 
 **Performance test 2**  
 ![Performance test 2](clients/static/clients/images/TimeStamp.JPG)
