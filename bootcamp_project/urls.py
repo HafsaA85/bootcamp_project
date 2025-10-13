@@ -8,6 +8,6 @@ from clients import views as client_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', client_views.home, name='home'),          # Home page
-    path('clients/', include('clients.urls')),         # Client URLs
+    path('', client_views.home, name='home'),         
+    path('clients/', include('clients.urls')),         
 ]
