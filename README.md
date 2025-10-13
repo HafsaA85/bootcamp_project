@@ -8,6 +8,21 @@ Empowering Minds is a web application that allows clients to manage their coachi
 
 The design of **Empowering Minds** focuses on providing a smooth and intuitive experience for clients seeking coaching services.
 
+## 🧠 MoSCoW Prioritisation System
+
+To manage the project effectively and ensure focus on essential features, the **MoSCoW prioritisation method** was used. This helped in deciding what needed to be developed first and what could be implemented later. Some of the could haves ben also implemented as time allowed.
+
+| Priority | Description | Features |
+|-----------|--------------|-----------|
+| **Must Have** | Core features essential for the system to function. Without these, the project would fail to meet its objectives. | - User registration and login system<br>- Client dashboard<br>- Appointment booking functionality<br>- Secure data handling with authentication |
+| **Should Have** | Important features that enhance usability but are not critical for initial deployment. | - Appointment editing and cancellation<br>- User profile management<br>- Mobile responsiveness |
+| **Could Have** | Nice-to-have features that improve user experience but are not necessary for core functionality. | - Motivational quotes on the homepage<br>- Smooth animations and hover effects<br>- Enhanced visual design and layout improvements |
+| **Won’t Have (This Time)** | Features intentionally excluded from this version due to time or scope constraints. May be added in future updates. | - Admin analytics dashboard<br>- Email/SMS appointment reminders<br>- Client feedback system |
+
+This prioritisation ensured that all **Must Have** features were completed first to deliver a functional MVP (Minimum Viable Product), while still allowing room for future improvements.
+
+
+
 ### Goals
 - Quick and simple signup/login
 - Easy appointment management (view, create, edit, cancel)
