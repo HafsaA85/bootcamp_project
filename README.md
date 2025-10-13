@@ -110,6 +110,14 @@ This diagram represents the main entities of the application and their relations
 | timestamp |
 +-------------+
 
+### Must Have
+
+![Must Have](clients/static/clients/images/mustHave.JPG)
+
+### Could Have
+
+![Could Have](clients/static/clients/images/couldHave.JPG)
+
 
 ### Notes
 
