@@ -292,7 +292,18 @@ The following manual tests were performed to verify the functionality of the Dja
  
 ![Test Doc with Screenshots](clients/static/clients/documents/)
 
+### Performance test
 
+## Note
+- A class feloow checked and the performance was showing low. But it was not showing when I testes.
+- I fixed suggested errors and it still didn't work on my side.
+
+# Example screenshots
+
+![Performance Test 1](clients/static/clients/images/Dessnapshot.JPG)
+![Performance Test 2](clients/static/clients/images/desktopPerformance.JPG)
+![Performance Test 3](clients/static/clients/images/TimeStamp.JPG)
+![Performance Test 4](clients/static/clients/images/Snapshot.JPG)
 
 ---
 
